@@ -58,11 +58,17 @@ export default Component.extend(Pagination, {
       get(this, 'queryTask').perform();
     },
 
-    libraryEntryDoingUpdate(entry, task) {
-      if (get(entry, 'rating')) {
-        this.incrementProperty('numRated');
-        task.catch(() => this.decrementProperty('numRated'));
-      }
+    createLibraryEntry(media, rating) {
+      const user = get(this, 'session.account');
+      const type = get(media, 'modelType');
+      const entry = get(this, 'store').createRecord('library-entry', {
+        status: 'completed',
+        rating,
+        user,
+        [type]: media
+      });
+      this.incrementProperty('numRated');
+      entry.save().catch(() => this.decrementProperty('numRated'));
     }
   }
 });

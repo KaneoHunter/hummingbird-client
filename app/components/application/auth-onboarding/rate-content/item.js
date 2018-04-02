@@ -1,7 +1,10 @@
 import Component from '@ember/component';
+import { invokeAction } from 'ember-invoke-action';
 
 export default Component.extend({
-  onCreate() {},
-  onRemove() {},
-  onUpdate() {}
+  actions: {
+    onClick(rating) {
+      invokeAction(this, 'onClick', rating);
+    }
+  }
 });

@@ -36,7 +36,7 @@
               {{application/auth-onboarding/rate-content/item
                 class="onboarding-media col-sm-4"
                 item=anime
-                onUpdate=(action 'libraryEntryDoingUpdate')
+                onClick=(action "createLibraryEntry" anime)
               }}
             {{/each}}
           {{/infinite-pagination}}
@@ -56,7 +56,7 @@
               {{application/auth-onboarding/rate-content/item
                 class="onboarding-media col-sm-3"
                 item=manga
-                onUpdate=(action 'libraryEntryDoingUpdate')
+                onClick=(action "createLibraryEntry" manga)
               }}
             {{/each}}
           {{/infinite-pagination}}
