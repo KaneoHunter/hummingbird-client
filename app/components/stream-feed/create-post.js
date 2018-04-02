@@ -52,7 +52,7 @@ export default Component.extend({
   }).restartable().maxConcurrency(2),
 
   setUnitNumberTask: task(function* () {
-    if (!get(this, 'session.hasUser') || !isEmpty(get(this, 'unitNumber'))) {
+    if (isEmpty(get(this, 'unitNumber')) === false) {
       return;
     }
     const media = get(this, '_usableMedia');
