@@ -1,3 +1,4 @@
+/* eslint-env node */
 const isMacOS = /^darwin/.test(process.platform);
 const isWindows = /^win/.test(process.platform);
 
