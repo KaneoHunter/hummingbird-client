@@ -31,15 +31,13 @@ moduleForModel('user', 'Unit | Model | user', {
 test('model validations', function(assert) {
   const user = this.subject();
   const valid = {
-    name: ['Okabe', '123 Okabe', 'Josh is a 💩', '岡部 倫太郎', 'Okabe Rintarō'],
-    slug: ['Okabe', '123Okabe', null, undefined],
+    name: ['Okabe', '123Okabe'],
     email: ['a@b.com', 'email+ignore@host.tld'],
     password: ['password']
   };
 
   const invalid = {
-    name: ['ab', 'abcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde', null, undefined],
-    slug: ['ab', '12345', '_okabe', 'asdadasdasdasdasdadadasd'],
+    name: ['ab', '12345', '_okabe', 'asdadasdasdasdasdadadasd', '', null, undefined],
     email: ['abc', 'abc@a', 'abc@abc.', '', null, undefined],
     password: ['not8', '', null, undefined]
   };
