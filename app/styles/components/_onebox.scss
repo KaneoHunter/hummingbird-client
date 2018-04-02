@@ -159,12 +159,8 @@
 }
 
 .stream-content {
-  .onebox-image {
-    background: #fafafa;
-    text-align: center;
-    img {
-      max-height: 810px;
-    }
+  .onebox-image img {
+    max-height: 400px;
   }
 }
 
