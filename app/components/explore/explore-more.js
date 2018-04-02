@@ -89,7 +89,7 @@ export default Component.extend(Pagination, {
         break;
       case 'newly-released':
         options.sort = '-startDate';
-        options.filter.status = 'current,finished';
+        options.filter.status = 'current';
         break;
       default:
         options.sort = '-userCount';
