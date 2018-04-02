@@ -9,8 +9,7 @@ moduleFor('route:application', 'Unit | Route | application', {
     'service:router-scroll',
     'service:scheduler',
     'service:intl',
-    'service:moment',
-    'service:raven'
+    'service:moment'
   ]
 });
 
