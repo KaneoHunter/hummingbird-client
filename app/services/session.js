@@ -1,7 +1,6 @@
 import Session from 'ember-simple-auth/services/session';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
-import { isPresent } from 'ember-utils';
 import service from 'ember-service/inject';
 import computed from 'ember-computed';
 import jQuery from 'jquery';
@@ -11,7 +10,7 @@ export default Session.extend({
   store: service(),
 
   hasUser: computed('isAuthenticated', 'account', function() {
-    return get(this, 'isAuthenticated') && isPresent(get(this, 'account'));
+    return get(this, 'isAuthenticated') && get(this, 'account');
   }).readOnly(),
 
   authenticateWithOAuth2(identification, password) {
@@ -37,7 +36,7 @@ export default Session.extend({
    * Get the account information for the sessioned user
    */
   getCurrentUser() {
-    const requestUrl = '/users?filter[self]=true&include=userRoles.role,userRoles.user';
+    const requestUrl = '/users?filter[self]=true&include=userRoles.role';
     return get(this, 'ajax').request(requestUrl).then((response) => {
       // push the user data into the store
       const [data] = response.data;
