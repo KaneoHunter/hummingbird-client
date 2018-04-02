@@ -301,12 +301,6 @@
     color: $body-secondary-text-color;
     font-size: 12px;
     font-weight: 600;
-    .reaction-user-name {
-      color: inherit;
-      &:hover {
-        color: $body-link-color;
-      }
-    }
   }
   .reaction-content {
     font-weight: 700;
