@@ -1,15 +1,6 @@
 <div class="unit-summary">
   <div class="unit-thumbnail col-lg-4 col-sm-6">
-    <div class="thumbnail-wrapper">
-      <span class="completion-status">Watched</span>
-      {{lazy-image src=(image model.thumbnail)}}
-    </div>
-
-    <span class="unit-number">
-      {{t "media.show.units.unit" type=model.modelType}}
-      {{model.number}}
-    </span>
-    <span class="info-emphasis thumb-caption">{{model.canonicalTitle}}</span>
+    {{media/units/unit-thumbnail unit=model}}
   </div>
 
   <div class="unit-info">
