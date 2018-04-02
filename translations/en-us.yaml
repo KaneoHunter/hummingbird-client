@@ -474,7 +474,7 @@ users:
     sorting:
       label: "Sort by:"
       options:
-        watched: "Date Updated"
+        watched: "Date Watched"
         started: "Date Started"
         finished: "Date Finished"
         added: "Date Added"
