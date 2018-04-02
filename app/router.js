@@ -66,8 +66,8 @@ RouterInstance.map(function() {
       this.route('show', { path: '/:slug' }, function() {
         this.route('episodes');
         this.route('characters');
-        this.route('reactions');
-        this.route('franchise');
+        this.route('reviews');
+        this.route('quotes');
       });
     });
   });
@@ -93,8 +93,7 @@ RouterInstance.map(function() {
 
   this.route('users', { path: '/users/:name' }, function() {
     this.route('library');
-    this.route('reviews'); // Legacy
-    this.route('reactions');
+    this.route('reviews');
     this.route('followers');
     this.route('following');
     this.route('groups');
@@ -130,7 +129,6 @@ RouterInstance.map(function() {
   this.route('posts', { path: '/posts/:id' });
   this.route('comments', { path: '/comments/:id' });
   this.route('reviews', { path: '/reviews/:id' });
-  this.route('media-reactions', { path: '/media-reactions/:id' });
   this.route('notifications');
   this.route('people');
   this.route('characters');

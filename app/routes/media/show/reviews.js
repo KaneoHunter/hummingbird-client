@@ -2,19 +2,23 @@ import Route from 'ember-route';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
 import service from 'ember-service/inject';
+import { capitalize } from 'ember-string';
 import Pagination from 'kitsu-shared/mixins/pagination';
 
 export default Route.extend(Pagination, {
-  templateName: 'media/show/franchise',
+  templateName: 'media/show/reviews',
   intl: service(),
 
   model() {
     const media = this._getParentModel();
     return {
-      taskInstance: this.queryPaginated('media-relationship', {
-        filter: { source_id: get(media, 'id') },
-        include: 'destination',
-        sort: 'role'
+      taskInstance: this.queryPaginated('review', {
+        include: 'user,media',
+        filter: {
+          media_type: capitalize(get(media, 'modelType')),
+          media_id: get(media, 'id')
+        },
+        sort: '-likes_count'
       }),
       paginatedRecords: []
     };
@@ -26,7 +30,7 @@ export default Route.extend(Pagination, {
   },
 
   titleToken() {
-    return get(this, 'intl').t('titles.media.show.franchise');
+    return get(this, 'intl').t('titles.media.show.reviews');
   },
 
   _getParentModel() {

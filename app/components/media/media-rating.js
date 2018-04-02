@@ -3,11 +3,7 @@ import get from 'ember-metal/get';
 import computed from 'ember-computed';
 
 export default Component.extend({
-  tagName: '',
-
-  /**
-   * Determines what class to use based on the percentage value.
-   */
+  /** Determines what class to use based on the percentage value. */
   percentageClass: computed('media.averageRating', function() {
     if (!get(this, 'media.averageRating')) {
       return '';

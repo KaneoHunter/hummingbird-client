@@ -1,28 +1,32 @@
-{{#if shouldRender}}
-  <section class="media--main-characters">
-    <div class="favorite-characters-panel">
-      <h5>{{t "media.show.summary.characters.header"}}</h5>
-      <div class="favorite-media-grid row">
-        {{#if taskInstance.isRunning}}
-          {{! @TODO: Custom Loader }}
-          <div class="text-xs-center w-100 m-t-1 m-b-1">
-            {{loading-spinner size="large"}}
-          </div>
-        {{else if taskInstance.value}}
-          {{#each taskInstance.value as |casting|}}
-            <div aria-label={{casting.character.name}} class="favorite-item col-sm-3 hint--top hint--bounce hint--rounded">
-              <a href="javascript:void(0);">
-                {{lazy-image src=(image casting.character.image)}}
-              </a>
-            </div>
-          {{/each}}
-        {{/if}}
+<div class="favorite-characters-panel">
+  <h5>{{t "media.show.summary.characters.header"}}</h5>
+  <div class="favorite-media-grid row">
+    {{#if taskInstance.isRunning}}
+      {{! @TODO: Custom Loader }}
+      <div class="text-xs-center w-100 m-t-1 m-b-1">
+        {{loading-spinner size="large"}}
       </div>
-      {{#if taskInstance.value}}
-        <a class="more-link" href={{href-to (concat media.modelType ".show.characters")}}>
+    {{else if taskInstance.error}}
+      <div class="text-xs-center w-100 font-italic">
+        {{t "errors.load"}}
+      </div>
+    {{else if taskInstance.value}}
+      {{#each taskInstance.value as |casting|}}
+        <div aria-label={{casting.character.name}} class="favorite-item col-sm-3 hint--top hint--bounce hint--rounded">
+          <a href="#">
+            {{lazy-image src=(image casting.character.image)}}
+          </a>
+        </div>
+      {{/each}}
+      <div class="text-xs-center w-100">
+        <a href={{href-to (concat media.modelType ".show.characters")}} class="button button--primary">
           {{t "media.show.summary.characters.more"}}
         </a>
-      {{/if}}
-    </div>
-  </section>
-{{/if}}
+      </div>
+    {{else}}
+      <div class="text-xs-center w-100 font-italic">
+        {{t "errors.contentEmpty"}}
+      </div>
+    {{/if}}
+  </div>
+</div>

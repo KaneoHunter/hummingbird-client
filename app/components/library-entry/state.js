@@ -4,14 +4,13 @@ import set from 'ember-metal/set';
 import service from 'ember-service/inject';
 import { bool, readOnly } from 'ember-computed';
 import { task } from 'ember-concurrency';
-import isChangeset from 'ember-changeset/utils/is-changeset';
 
 export default Component.extend({
   classNames: ['library-state'],
   classNameBindings: ['showHeader:with-header'],
   showHeader: true,
   createOnly: false,
-  reactionOpen: false,
+  reviewOpen: false,
 
   queryCache: service(),
   store: service(),
@@ -47,57 +46,54 @@ export default Component.extend({
       user: get(this, 'session.account'),
       [type]: get(this, 'media')
     });
-    try {
-      set(this, 'libraryEntry', libraryEntry);
-      const response = yield libraryEntry.save();
-      set(libraryEntry, get(this, 'mediaType'), get(this, 'media'));
-      return response;
-    } catch (error) {
-      set(this, 'libraryEntry', null);
-      libraryEntry.rollbackAttributes();
-    }
+    return yield libraryEntry.save();
   }).drop(),
 
   removeLibraryEntryTask: task(function* () {
     const libraryEntry = get(this, 'libraryEntry');
-    try {
-      set(this, 'libraryEntry', null);
-      return yield libraryEntry.destroyRecord();
-    } catch (error) {
-      libraryEntry.rollbackAttributes();
-    }
+    return yield libraryEntry.destroyRecord();
   }).drop(),
 
-  updateLibraryEntryTask: task(function* (content) {
-    const libraryEntry = content || get(this, 'libraryEntry');
-    try {
-      yield libraryEntry.save();
-      get(this, 'queryCache').invalidateType('library-entry');
-    } catch (error) {
-      if (isChangeset(libraryEntry)) {
-        libraryEntry.rollback();
-      } else {
-        libraryEntry.rollbackAttributes();
-      }
-    }
+  updateLibraryEntryTask: task(function* () {
+    const libraryEntry = get(this, 'libraryEntry');
+    return yield libraryEntry.save();
   }).enqueue(),
 
   actions: {
+    createLibraryEntry(status, rating) {
+      get(this, 'createLibraryEntryTask').perform(status, rating).then((libraryEntry) => {
+        set(libraryEntry, get(this, 'mediaType'), get(this, 'media'));
+        set(this, 'libraryEntry', libraryEntry);
+      });
+    },
+
+    removeLibraryEntry() {
+      get(this, 'removeLibraryEntryTask').perform().then(() => {
+        set(this, 'libraryEntry', null);
+      }).catch(() => {
+        get(this, 'libraryEntry').rollbackAttributes();
+      });
+    },
+
     updateAttribute(attribute, value) {
       set(this, `libraryEntry.${attribute}`, value);
-      get(this, 'updateLibraryEntryTask').perform();
+      get(this, 'updateLibraryEntryTask').perform().then(() => {
+        get(this, 'queryCache').invalidateType('library-entry');
+      }).catch(() => {
+        get(this, 'libraryEntry').rollbackAttributes();
+      });
     }
   },
 
   _getRequestOptions() {
     const type = get(this, 'mediaType');
     return {
-      include: 'mediaReaction',
+      include: 'review',
       filter: {
         user_id: get(this, 'session.account.id'),
-        [`${type}_id`]: get(this, 'media.id')
-      },
-      page: { limit: 1 }
+        kind: type,
+        [`${type}_id`]: get(get(this, 'media'), 'id')
+      }
     };
   }
 });

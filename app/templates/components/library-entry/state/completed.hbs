@@ -8,27 +8,19 @@
 {{/library-entry/rating-button}}
 
 {{#unless rateOnly}}
-  {{! Write Reaction }}
-  <button class="reaction-button button button--secondary seen-this" {{action onReaction}}>
-    {{#if (and libraryEntry.mediaReaction (not libraryEntry.mediaReaction.isNew))}}
-      {{t "library-entry.state.edit-reaction"}}
+  {{! Write Review }}
+  <button class="review-button button button--secondary button--muted" {{action onReview}}>
+    {{#if (and libraryEntry.review (not libraryEntry.review.isNew))}}
+      {{t "library-entry.state.edit-review"}}
     {{else}}
-      {{t "library-entry.state.post-reaction"}}
+      {{t "library-entry.state.write-review"}}
     {{/if}}
   </button>
 
-  {{! Edit Library }}
+  {{! Remove }}
   {{#unless hideRemove}}
-    <button class="button button--secondary button--muted" {{action (toggle "showEditModal" this)}}>
-      {{t "library-entry.state.edit-library"}}
+    <button class="remove-button button button--secondary button--muted" {{action onRemove}}>
+      {{t "library-entry.state.remove-from-library"}}
     </button>
   {{/unless}}
 {{/unless}}
-
-{{#if showEditModal}}
-  {{to-elsewhere named="modal" send=(component "modals/library-edit"
-    libraryEntry=libraryEntry
-    saveEntry=onSave
-    removeEntry=onRemove
-    onClose=(toggle-action "showEditModal" this))}}
-{{/if}}

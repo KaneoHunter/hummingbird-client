@@ -8,7 +8,6 @@ const CACHE_TIME_HOUR = 1;
 
 export default Service.extend({
   store: service(),
-  raven: service(),
 
   init() {
     this._super(...arguments);

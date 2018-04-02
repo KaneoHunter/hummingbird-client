@@ -13,7 +13,6 @@ moduleForModel('library-entry', 'Unit | Model | library-entry', {
     'validator:messages',
     'model:anime',
     'model:manga',
-    'model:media-reaction',
     'model:user',
     'model:review',
     'model:-base'
