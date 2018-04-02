@@ -109,17 +109,14 @@ export default Component.extend(ClipboardMixin, CanMixin, {
     }
 
     // groups
-    if (get(post, 'id') && get(this, 'session.hasUser')) {
+    if (get(post, 'id')) {
       const group = post.belongsTo('targetGroup').value();
       if (group) {
         if (get(this, 'kitsuGroupMembership')) {
           set(this, 'groupMembership', get(this, 'kitsuGroupMembership'));
         } else {
           get(this, 'queryCache').query('group-member', {
-            filter: {
-              group: get(group, 'id'),
-              user: get(this, 'session.account.id')
-            },
+            filter: { group, user: get(this, 'session.account') },
             include: 'permissions'
           }).then((records) => {
             const record = get(records, 'firstObject');

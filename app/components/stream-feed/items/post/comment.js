@@ -100,15 +100,12 @@ export default Component.extend(ClipboardMixin, Pagination, CanMixin, {
 
     // groups
     const group = get(this, 'post').belongsTo('targetGroup').value();
-    if (group && get(this, 'session.hasUser')) {
+    if (group) {
       if (get(this, 'kitsuGroupMembership')) {
         set(this, 'groupMembership', get(this, 'kitsuGroupMembership'));
       } else {
         get(this, 'queryCache').query('group-member', {
-          filter: {
-            group: get(group, 'id'),
-            user: get(this, 'session.account.id')
-          },
+          filter: { group, user: get(this, 'session.account') },
           include: 'permissions'
         }).then((records) => {
           const record = get(records, 'firstObject');
