@@ -204,7 +204,7 @@
 .stream-item--title-block {
   @extend .clearfix;
   margin-bottom: 0;
-  padding-bottom: 8px;
+  padding-bottom: 15px;
   background: $foreground-background-color;
   position: relative;
   z-index: $zIndex--stream-item-block;
@@ -246,6 +246,7 @@
     display: inline-block;
     line-height: 20px;
     position: relative;
+    top: 7px;
   }
   .secondary {
     display: block;
@@ -1140,7 +1141,6 @@
       display: block;
       text-align: center;
       padding: 5px 0;
-      font-size: 13px;
     }
     .reaction-meta {
       display: flex;
