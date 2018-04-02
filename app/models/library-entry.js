@@ -7,12 +7,14 @@ import { alias } from '@ember/object/computed';
 
 const Validations = buildValidations({
   progress: [
+    validator('presence', true),
     validator('number', {
       integer: true,
       gte: 0
     })
   ],
   reconsumeCount: [
+    validator('presence', true),
     validator('number', {
       integer: true,
       gte: 0

@@ -1,9 +1,13 @@
+import Ember from 'ember';
 import config from 'client/config/environment';
-import Inflector from 'ember-inflector';
+
+const {
+  Inflector: { inflector }
+} = Ember;
 
 export function initialize() {
-  Inflector.inflector.uncountable('anime');
-  Inflector.inflector.uncountable('manga');
+  inflector.uncountable('anime');
+  inflector.uncountable('manga');
 }
 
 const result = {
