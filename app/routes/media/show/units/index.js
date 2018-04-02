@@ -13,18 +13,21 @@ export default Route.extend(Pagination, {
     const media = this._getParentModel();
     const mediaType = capitalize(get(media, 'modelType'));
     let unitType;
+    let collectionType;
     let filter;
     if (mediaType === 'Anime') {
       unitType = 'episode';
+      collectionType = 'season';
       filter = { mediaType, media_id: get(media, 'id') };
     } else {
       unitType = 'chapter';
+      collectionType = 'volume';
       filter = { manga_id: get(media, 'id') };
     }
     return {
       taskInstance: this.queryPaginated(unitType, {
         filter,
-        sort: 'number'
+        sort: `${collectionType}Number,number`
       }),
       paginatedRecords: []
     };
