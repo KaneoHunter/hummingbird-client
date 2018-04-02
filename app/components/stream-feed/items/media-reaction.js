@@ -15,10 +15,7 @@ export default Component.extend(ClipboardMixin, {
   media: alias('reaction.media'),
 
   canDelete: computed('session.account', 'reaction', function() {
-    const currentUser = get(this, 'session.hasUser') && get(this, 'session.account');
-    if (!currentUser) {
-      return false;
-    }
+    const currentUser = get(this, 'session.account');
     if (currentUser.hasRole('admin', get(this, 'reaction'))) {
       return true;
     }
