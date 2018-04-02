@@ -274,10 +274,6 @@ media:
         episode {Aired}
         chapter {Published}
         other {}}"
-      completed: "{type, select,
-        episode {Watched}
-        chapter {Read}
-        other {Complete}}"
       feed:
         header: "{type, select,
           episode {Episode}
