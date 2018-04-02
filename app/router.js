@@ -125,6 +125,7 @@ RouterInstance.map(function() {
     this.route('mobile-bugs-anything', { path: '/mobile-bugs/*path' });
     this.route('mobile-features');
     this.route('mobile-features-anything', { path: '/mobile-features/*path' });
+
   });
 
   this.route('admin', function() {
