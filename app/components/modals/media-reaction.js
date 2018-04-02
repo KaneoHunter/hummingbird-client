@@ -40,6 +40,11 @@ export default Component.extend({
     set(this, 'placeholderIndex', this._getRandomInt(0, 4));
   },
 
+  didInsertElement() {
+    this._super(...arguments);
+    this.$().focus();
+  },
+
   loadReactionTask: task(function* () {
     const libraryEntry = get(this, 'libraryEntry');
     let reaction = null;
