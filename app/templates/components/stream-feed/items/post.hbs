@@ -265,6 +265,7 @@
             {{#if editModalOpened}}
               {{to-elsewhere named="modal" send=(component "stream-feed/edit-post"
                 post=post
+                isEditable=isEditable
                 unitNumber=post.spoiledUnit.number
                 onClose=(toggle-action "editModalOpened" this)
               )}}

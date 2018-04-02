@@ -73,7 +73,9 @@
 
             {{! Edit/Delete Options }}
             {{#if canEditComment}}
-              <a class="dropdown-item" href="#" {{action (toggle "isEditing" this)}}>Edit Comment</a>
+              {{#if isEditable}}
+                <a class="dropdown-item" href="#" {{action (toggle "isEditing" this)}}>Edit Comment</a>
+              {{/if}}
               <a class="dropdown-item" href="#" {{action (toggle "deleteModalOpened" this)}}>Delete Comment</a>
               {{#if deleteModalOpened}}
                 {{to-elsewhere named="modal" send=(component "modals/confirm-action"
