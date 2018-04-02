@@ -65,11 +65,6 @@ module.exports = function(environment) {
         name: 'FacebookPixel',
         environments: ['production'],
         config: { id: '1372973436170230' }
-      },
-      {
-        name: 'TwitterPixel',
-        environments: ['production'],
-        config: { id: 'nz90m' }
       }
     ],
 
