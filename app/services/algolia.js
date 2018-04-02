@@ -1,19 +1,16 @@
 import { get, set } from '@ember/object';
 import Service, { inject as service } from '@ember/service';
 import { task } from 'ember-concurrency';
-import RSVP from 'rsvp';
 import algoliasearch from 'algoliasearch';
 import config from 'client/config/environment';
 
 export default Service.extend({
   ajax: service(),
-  keys: null,
-  indices: null,
+  keys: {},
+  indices: {},
 
   loadKeys() {
-    if (get(this, 'keys')) {
-      return RSVP.resolve();
-    }
+    if (get(this, 'loadKeysTask.performCount') > 0) return Promise.resolve();
     return get(this, 'loadKeysTask').perform();
   },
 
@@ -24,10 +21,7 @@ export default Service.extend({
   }).drop(),
 
   getIndex: task(function* (name) {
-    const indicies = get(this, 'indicies');
-    if (get(indicies, name)) {
-      return get(indicies, name);
-    }
+    if (get(this, `indices.${name}`)) return get(this, `indices.${name}`);
     yield this.loadKeys();
     const info = get(this, `keys.${name}`);
     const client = algoliasearch(config.algolia.appId, info.key);
