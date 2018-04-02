@@ -115,8 +115,8 @@ export default Component.extend(FlickityActionsMixin, Pagination, {
     }
     fields.libraryEntries = fields.libraryEntries.join(',');
 
-    if (type) {
-      const unitKey = type === 'anime' ? 'episodes' : 'chapters';
+    const unitKey = type === 'anime' ? 'episodes' : undefined;
+    if (unitKey) {
       fields[unitKey] = 'canonicalTitle';
     }
 
