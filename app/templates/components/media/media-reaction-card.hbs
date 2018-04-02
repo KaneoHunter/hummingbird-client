@@ -10,51 +10,52 @@
   </a>
 {{/if}}
 
-{{#if (or (is-self reaction.user) canDelete (and session.hasUser (not (is-self reaction.user))))}}
-  <div class="reaction-card-actions">
-    <span class="more-wrapper">
-      <a href="#" class="more-drop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {{svg-jar "more"}}
-      </a>
-      <div class="dropdown-menu dropdown-menu-right">
-        {{! Edit }}
-        {{#if (is-self reaction.user)}}
-          <a href="#" {{action (toggle "editModalOpened" this)}}>{{t "media-reaction.edit"}}</a>
-          {{#if editModalOpened}}
-            {{to-elsewhere named="modal" send=(component "modals/media-reaction"
-              media=reaction.media
-              libraryEntry=reaction.libraryEntry.content
-              modalId="reaction-modal"
-              onClose=(toggle-action "editModalOpened" this)
-            )}}
-          {{/if}}
-        {{/if}}
+<div class="reaction-card-actions">
+  <span class="more-wrapper">
+    <a href="#" class="more-drop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{svg-jar "more"}}
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+      {{! Edit }}
+      {{#if (is-self reaction.user)}}
+        <span {{action (toggle "isModalOpen" this)}}>
+          {{t "media-reaction.edit"}}
+        </span>
 
-        {{! Delete }}
-        {{#if canDelete}}
-          <a href="#" {{action (toggle "deleteModalOpened" this)}}>{{t "media.show.reactions.delete"}}</a>
-          {{#if deleteModalOpened}}
-            {{to-elsewhere named="modal" send=(component "modals/confirm-action"
-              onConfirm=(action "deleteReaction")
-              onClose=(toggle-action "deleteModalOpened" this)
-            )}}
-          {{/if}}
+        {{#if isModalOpen}}
+          {{to-elsewhere named="modal" send=(component "modals/media-reaction"
+            media=reaction.media
+            libraryEntry=reaction.libraryEntry.content
+            modalId="reaction-modal"
+            onClose=(toggle-action "isModalOpen" this)
+          )}}
         {{/if}}
+      {{/if}}
 
-        {{! Report }}
-        {{#if (and session.hasUser (not (is-self reaction.user)))}}
-          <a href="#" {{action (toggle "reportingReaction" this)}}>{{t "media.show.reactions.report"}}</a>
-          {{#if reportingReaction}}
-            {{to-elsewhere named="modal" send=(component "modals/report-content"
-              content=reaction
-              onClose=(toggle-action "reportingReaction" this)
-            )}}
-          {{/if}}
+      {{! Delete }}
+      {{#if canDelete}}
+        <a href="#" {{action (toggle "deleteModalOpened" this)}}>{{t "media.show.reactions.delete"}}</a>
+        {{#if deleteModalOpened}}
+          {{to-elsewhere named="modal" send=(component "modals/confirm-action"
+            onConfirm=(action "deleteReaction")
+            onClose=(toggle-action "deleteModalOpened" this)
+          )}}
         {{/if}}
-      </div>
-    </span>
-  </div>
-{{/if}}
+      {{/if}}
+
+      {{! Report }}
+      {{#if (and session.hasUser (not (is-self reaction.user)))}}
+        <a href="#" {{action (toggle "reportingReaction" this)}}>{{t "media.show.reactions.report"}}</a>
+        {{#if reportingReaction}}
+          {{to-elsewhere named="modal" send=(component "modals/report-content"
+            content=reaction
+            onClose=(toggle-action "reportingReaction" this)
+          )}}
+        {{/if}}
+      {{/if}}
+    </div>
+  </span>
+</div>
 
 <div class="reaction-content">
   <span class="reaction-media-info">
