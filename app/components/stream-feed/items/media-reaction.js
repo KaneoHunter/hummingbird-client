@@ -28,7 +28,7 @@ export default Component.extend(ClipboardMixin, {
 
   init() {
     this._super(...arguments);
-    set(this, 'host', `${window.location.protocol}//${window.location.host}`);
+    set(this, 'host', `${location.protocol}//${location.host}`);
   },
 
   didReceiveAttrs() {

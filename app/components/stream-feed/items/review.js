@@ -13,7 +13,7 @@ export default Component.extend(ClipboardMixin, {
   notify: service(),
   router: service(),
   store: service(),
-  host: getter(() => `${window.location.protocol}//${window.location.host}`),
+  host: getter(() => `${location.protocol}//${location.host}`),
 
   tweetLink: getter(function() {
     const host = get(this, 'host');
