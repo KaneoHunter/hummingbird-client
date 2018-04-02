@@ -7,27 +7,15 @@
   onLoad=(action onPlayerLoad)
 }}
 
-{{#if didUndo}}
-  Undone!
-{{/if}}
-
 {{#if didUpdate}}
   Episode {{episode.number}} marked done.
-  {{#if undoLibraryEntryUpdate.isRunning}}
-    {{loading-spinner size="small"}}
-  {{else}}
-    <button {{action (perform undoLibraryEntryUpdate)}}>Undo</button>
-  {{/if}}
+  <button {{action (perform undoLibraryEntryUpdate)}}>Undo</button>
 {{/if}}
 
 {{#if showUpdatePrompt}}
-  {{#if updateLibraryEntry.isRunning}}
-    {{loading-spinner size="small"}}
-  {{else}}
-    <button {{action (perform updateLibraryEntry true)}}>
-      Mark Watched
-    </button>
-  {{/if}}
+  <button {{action (perform updateLibraryEntry true)}}>
+    Mark Watched
+  </button>
 {{/if}}
 
 {{#if showJoinPrompt}}
