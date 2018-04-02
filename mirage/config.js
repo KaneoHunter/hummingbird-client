@@ -34,7 +34,6 @@ function _defineRoutes(server) {
   server.get('/castings', { data: [] });
   server.get('/favorites', { data: [] });
 
-  server.get('/follows', { data: [] });
   server.get('/group-members', { data: [] });
 }
 
