@@ -75,10 +75,10 @@ module.exports = function(defaults) {
     'ember-composable-helpers': {
       only: [
         // Action
-        'pipe', 'toggle', 'queue', 'toggle-action',
+        'pipe', 'toggle', 'queue',
         // Array
         'array', 'map-by', 'sort-by', 'filter-by', 'reject-by',
-        'find-by', 'take', 'repeat', 'contains',
+        'find-by', 'take', 'repeat',
         // Object
         'group-by',
         // Math
