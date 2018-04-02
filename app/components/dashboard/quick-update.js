@@ -83,7 +83,6 @@ export default Component.extend(FlickityActionsMixin, Pagination, {
       if (isEmpty(content)) { return; }
       const post = get(this, 'store').createRecord('post', {
         content,
-        spoiler: true,
         media: get(entry, 'media'),
         spoiledUnit: get(entry, 'unit'),
         user: get(this, 'session.account')
