@@ -8,7 +8,6 @@ import CoverPageMixin from 'client/mixins/routes/cover-page';
 
 export default Route.extend(DataErrorMixin, CanonicalRedirectMixin, CoverPageMixin, {
   queryCache: service(),
-  intl: service(),
 
   model({ name }) {
     if (name.match(/\D+/)) {
@@ -37,7 +36,8 @@ export default Route.extend(DataErrorMixin, CanonicalRedirectMixin, CoverPageMix
   },
 
   setHeadTags(model) {
-    const description = `${get(this, 'intl').t('head.users.description', { user: get(model, 'name') })} ${get(model, 'about')}`;
+    const description = `${get(model, 'name')} is using Kitsu to share their anime & manga
+      experiences. ${get(model, 'about')}`;
     return [{
       type: 'meta',
       tagId: 'meta-description',

@@ -56,7 +56,6 @@ export default Base.extend(Validations, {
   language: attr('string'),
   likesGivenCount: attr('number'),
   location: attr('string'),
-  mediaReactionsCount: attr('number'),
   name: attr('string'),
   password: attr('string'),
   pastNames: attr('array'),

@@ -46,9 +46,7 @@
     {{else if reactions}}
       {{#infinite-pagination onPagination=(route-action "onPagination")}}
         {{#each reactions as |reaction|}}
-          <div class="reaction-wrapper col-sm-4">
-            {{media/media-reaction-card reaction=reaction media=reaction.media}}
-          </div>
+          {{media/media-reaction-card reaction=reaction media=reaction.media}}
         {{/each}}
       {{/infinite-pagination}}
     {{else}}
