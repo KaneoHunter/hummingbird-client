@@ -53,7 +53,8 @@ export default Component.extend({
           label: 'user',
           value: get(this, 'user.id')
         });
-      }).catch(err => get(this, 'notify').error(errorMessages(err)));
+      })
+      .catch(err => get(this, 'notify').error(errorMessages(err)));
     }
   }).drop(),
 

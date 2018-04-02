@@ -35,10 +35,8 @@ export default Controller.extend({
   )),
 
   filters: getter(() => (
-    [
-      { value: true, text: 'Hide Adult Content' },
-      { value: false, text: 'Show Adult Content (¬‿¬ )' }
-    ]
+    [{ value: true, text: 'Hide Adult Content' },
+    { value: false, text: 'Show Adult Content (¬‿¬ )' }]
   )),
 
   isValid: computed('username', 'user.hasDirtyAttributes', 'user.name', function() {
