@@ -67,9 +67,8 @@ export default Component.extend({
         return '#';
       }
       case 'MediaReactionVote': {
-        if (isPresent(get(activity, 'target'))) {
-          const id = get(activity, 'target.id');
-          return hrefTo(this, 'media-reactions', id, queryParams);
+        if (isPresent(modelId)) {
+          return hrefTo(this, 'media-reactions', modelId, queryParams);
         }
         return '#';
       }
