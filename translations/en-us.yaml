@@ -514,7 +514,7 @@ settings:
       action:
         create: "Create"
         update: "Update"
-        destroy: "Remove"
+        delete: "Remove"
       status:
         pending: "Pending"
         success: "Success"
