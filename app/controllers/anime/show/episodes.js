@@ -1,6 +1,6 @@
-import UnitsController from 'client/controllers/media/show/units';
+import Controller from 'ember-controller';
 import { concat } from 'client/utils/computed-macros';
 
-export default UnitsController.extend({
+export default Controller.extend({
   taskValue: concat('model.taskInstance.value', 'model.paginatedRecords'),
 });

@@ -33,7 +33,7 @@ export default Component.extend(ClipboardMixin, CanMixin, {
     return get(this, 'group.activities.firstObject');
   }),
 
-  postUnitText: getter(function() {
+  postEpisodeText: getter(function() {
     const unit = get(this, 'post.spoiledUnit');
     return isEmpty(get(unit, 'canonicalTitle')) ? '' : `- ${get(unit, 'canonicalTitle')}`;
   }),

@@ -3,14 +3,14 @@ import { belongsTo } from 'ember-data/relationships';
 import Base from 'client/models/-base';
 
 export default Base.extend({
-  published: attr('utc'),
-  canonicalTitle: attr('string'),
-  length: attr('number'),
-  number: attr('number'),
-  volumeNumber: attr('number'),
-  synopsis: attr('string'),
-  thumbnail: attr('object'),
   titles: attr('object'),
+  canonicalTitle: attr('string'),
+  volumeNumber: attr('number'),
+  number: attr('number'),
+  synopsis: attr('string'),
+  published: attr('boolean'),
+  length: attr('number'),
+  thumbnail: attr('object'),
 
-  manga: belongsTo('manga'),
+  manga: belongsTo('manga')
 });

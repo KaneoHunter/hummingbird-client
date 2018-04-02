@@ -64,10 +64,7 @@ RouterInstance.map(function() {
   ['anime', 'manga'].forEach((media) => {
     this.route(media, function() {
       this.route('show', { path: '/:slug' }, function() {
-        const units = media === 'anime' ? 'episodes' : 'chapters';
-        this.route('units', { path: `/${units}` }, function() {
-          this.route('show', { path: '/:number' });
-        });
+        this.route('episodes');
         this.route('characters');
         this.route('reactions');
         this.route('franchise');
