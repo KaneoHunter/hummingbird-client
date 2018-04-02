@@ -10,6 +10,7 @@ import { strictInvokeAction } from 'ember-invoke-action';
 export default Component.extend({
   classNames: ['quick-update-item'],
   updatePostText: '',
+  mediaPosterURL: null,
   intl: service(),
   store: service(),
   isCompleted: equal('entry.status', 'completed').readOnly(),
@@ -67,14 +68,14 @@ export default Component.extend({
     return htmlSafe(`width: ${result}%;`);
   }).readOnly(),
 
-  mediaPosterURL: computed('entry.{media,unit}', function() {
-    let posterObject = get(this, 'entry.media.posterImage');
-    const thumbnail = get(this, 'entry.unit.thumbnail');
-    if (thumbnail && Object.keys(thumbnail).length > 0) {
-      posterObject = thumbnail;
+  didReceiveAttrs() {
+    this._super(...arguments);
+    let poster = get(this, 'entry.media.posterImage');
+    if (get(this, 'entry.media.modelType') === 'anime') {
+      poster = get(this, 'entry.unit.thumbnail') || poster;
     }
-    return posterObject;
-  }).readOnly(),
+    set(this, 'mediaPosterURL', poster);
+  },
 
   updateEntryTask: task(function* () {
     const model = get(this, 'entry');
