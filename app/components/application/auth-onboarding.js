@@ -1,5 +1,7 @@
-import Component from '@ember/component';
-import { get, set, computed } from '@ember/object';
+import Component from 'ember-component';
+import set from 'ember-metal/set';
+import get from 'ember-metal/get';
+import computed from 'ember-computed';
 import { invokeAction } from 'ember-invoke-action';
 
 export default Component.extend({

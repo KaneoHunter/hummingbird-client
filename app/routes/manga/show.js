@@ -1,6 +1,7 @@
 import MediaShowRoute from 'client/routes/media/show';
-import { get, set } from '@ember/object';
-import { capitalize } from '@ember/string';
+import get from 'ember-metal/get';
+import set from 'ember-metal/set';
+import { capitalize } from 'ember-string';
 
 export default MediaShowRoute.extend({
   afterModel(model) {

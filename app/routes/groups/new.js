@@ -1,6 +1,7 @@
-import Route from '@ember/routing/route';
-import { get, set } from '@ember/object';
-import { inject as service } from '@ember/service';
+import Route from 'ember-route';
+import get from 'ember-metal/get';
+import set from 'ember-metal/set';
+import service from 'ember-service/inject';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 import RSVP from 'rsvp';
 

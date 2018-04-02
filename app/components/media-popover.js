@@ -1,5 +1,6 @@
-import Component from '@ember/component';
-import { get, computed } from '@ember/object';
+import Component from 'ember-component';
+import get from 'ember-metal/get';
+import computed from 'ember-computed';
 import HoverIntentMixin from 'client/mixins/hover-intent';
 
 export default Component.extend(HoverIntentMixin, {

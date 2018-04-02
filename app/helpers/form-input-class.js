@@ -1,4 +1,4 @@
-import { helper } from '@ember/component/helper';
+import { helper } from 'ember-helper';
 
 export function formInputClass([invalid, valid]) {
   const klasses = ['form-control'];

@@ -1,6 +1,6 @@
-import Component from '@ember/component';
-import { get, computed } from '@ember/object';
-import { gte } from '@ember/object/computed';
+import Component from 'ember-component';
+import computed, { gte } from 'ember-computed';
+import get from 'ember-metal/get';
 
 export default Component.extend({
   hasRatings: gte('user.ratingsCount', 5),

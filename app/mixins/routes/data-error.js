@@ -1,5 +1,5 @@
-import Mixin from '@ember/object/mixin';
-import { get } from '@ember/object';
+import Mixin from 'ember-metal/mixin';
+import get from 'ember-metal/get';
 
 export default Mixin.create({
   actions: {

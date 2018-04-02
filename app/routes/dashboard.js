@@ -1,5 +1,5 @@
-import Route from '@ember/routing/route';
-import { get } from '@ember/object';
+import Route from 'ember-route';
+import get from 'ember-metal/get';
 
 export default Route.extend({
   breadcrumb: null,

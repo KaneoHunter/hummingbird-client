@@ -1,7 +1,8 @@
-import Component from '@ember/component';
-import { get, set } from '@ember/object';
-import { filterBy } from '@ember/object/computed';
-import { inject as service } from '@ember/service';
+import Component from 'ember-component';
+import set from 'ember-metal/set';
+import get from 'ember-metal/get';
+import { filterBy } from 'ember-computed';
+import service from 'ember-service/inject';
 import { task } from 'ember-concurrency';
 import { invokeAction } from 'ember-invoke-action';
 import RSVP from 'rsvp';

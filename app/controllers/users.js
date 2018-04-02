@@ -1,7 +1,8 @@
-import Controller from '@ember/controller';
-import { get, set, computed } from '@ember/object';
-import { alias } from '@ember/object/computed';
-import { inject as service } from '@ember/service';
+import Controller from 'ember-controller';
+import computed, { alias } from 'ember-computed';
+import get from 'ember-metal/get';
+import set from 'ember-metal/set';
+import service from 'ember-service/inject';
 import { image } from 'client/helpers/image';
 
 export default Controller.extend({

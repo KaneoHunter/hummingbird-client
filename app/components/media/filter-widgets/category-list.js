@@ -1,6 +1,7 @@
 import Component from 'client/components/explore/category-sidebar/category-modal';
-import { get, set } from '@ember/object';
-import { copy } from '@ember/object/internals';
+import get from 'ember-metal/get';
+import set from 'ember-metal/set';
+import { copy } from 'ember-metal/utils';
 import { invokeAction } from 'ember-invoke-action';
 
 export default Component.extend({

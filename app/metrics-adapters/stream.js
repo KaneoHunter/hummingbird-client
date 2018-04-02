@@ -1,5 +1,6 @@
 import BaseAdapter from 'ember-metrics/metrics-adapters/base';
-import { get, set } from '@ember/object';
+import get from 'ember-metal/get';
+import set from 'ember-metal/set';
 import jQuery from 'jquery';
 import Config from 'client/config/environment';
 import canUseDOM from 'client/utils/can-use-dom';

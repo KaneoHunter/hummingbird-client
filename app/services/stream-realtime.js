@@ -1,5 +1,5 @@
-import Service from '@ember/service';
-import { get } from '@ember/object';
+import Service from 'ember-service';
+import get from 'ember-metal/get';
 import Config from 'client/config/environment';
 
 export default Service.extend({

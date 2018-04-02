@@ -1,9 +1,10 @@
-import Component from '@ember/component';
-import { get, set } from '@ember/object';
-import { inject as service } from '@ember/service';
+import Component from 'ember-component';
+import get from 'ember-metal/get';
+import set from 'ember-metal/set';
+import service from 'ember-service/inject';
 import { task } from 'ember-concurrency';
 import { invokeAction } from 'ember-invoke-action';
-import { isEmpty } from '@ember/utils';
+import { isEmpty } from 'ember-utils';
 
 export default Component.extend({
   classNames: ['tab-pane'],

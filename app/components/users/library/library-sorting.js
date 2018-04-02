@@ -1,5 +1,6 @@
-import Component from '@ember/component';
-import { get, set } from '@ember/object';
+import Component from 'ember-component';
+import get from 'ember-metal/get';
+import set from 'ember-metal/set';
 
 export default Component.extend({
   init() {

@@ -1,6 +1,8 @@
-import Component from '@ember/component';
-import { get, set, computed } from '@ember/object';
-import { bind } from '@ember/runloop';
+import Component from 'ember-component';
+import get from 'ember-metal/get';
+import set from 'ember-metal/set';
+import computed from 'ember-computed';
+import { bind } from 'ember-runloop';
 import { invoke, invokeAction } from 'ember-invoke-action';
 /* global Cropper */
 

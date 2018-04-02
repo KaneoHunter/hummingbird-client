@@ -1,7 +1,8 @@
 import Component from 'client/components/media/media-reaction';
-import { get, set, computed } from '@ember/object';
-import { inject as service } from '@ember/service';
-import { alias, reads } from '@ember/object/computed';
+import get from 'ember-metal/get';
+import set from 'ember-metal/set';
+import service from 'ember-service/inject';
+import computed, { alias, reads } from 'ember-computed';
 import { invokeAction } from 'ember-invoke-action';
 import errorMessages from 'client/utils/error-messages';
 import ClipboardMixin from 'client/mixins/clipboard';

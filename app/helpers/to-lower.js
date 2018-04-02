@@ -1,5 +1,5 @@
-import { helper } from '@ember/component/helper';
-import { isArray } from '@ember/array';
+import { helper } from 'ember-helper';
+import { isEmberArray as isArray } from 'ember-array/utils';
 
 /**
  * Supports calling `toLowerCase` on a single property, or on each

@@ -1,5 +1,5 @@
-import Component from '@ember/component';
-import { alias } from '@ember/object/computed';
+import Component from 'ember-component';
+import { alias } from 'ember-computed';
 
 export default Component.extend({
   membersToday: alias('stats.today.members'),

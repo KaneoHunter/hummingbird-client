@@ -1,5 +1,5 @@
 import MetricsService from 'ember-metrics/services/metrics';
-import { inject as service } from '@ember/service';
+import service from 'ember-service/inject';
 import Config from 'client/config/environment';
 
 export default MetricsService.extend({

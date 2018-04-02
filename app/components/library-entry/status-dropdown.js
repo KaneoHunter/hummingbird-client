@@ -1,5 +1,7 @@
 import Component from 'client/components/library-entry/state';
-import { get, set, computed } from '@ember/object';
+import get from 'ember-metal/get';
+import set from 'ember-metal/set';
+import computed from 'ember-computed';
 import { invoke } from 'ember-invoke-action';
 import { LIBRARY_STATUSES } from 'client/models/library-entry';
 

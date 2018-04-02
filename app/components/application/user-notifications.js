@@ -1,9 +1,11 @@
-import Component from '@ember/component';
-import { get, set, computed } from '@ember/object';
-import { guidFor } from '@ember/object/internals';
-import { inject as service } from '@ember/service';
+import Component from 'ember-component';
+import get from 'ember-metal/get';
+import set from 'ember-metal/set';
+import { guidFor } from 'ember-metal/utils';
+import service from 'ember-service/inject';
+import computed from 'ember-computed';
 import { task } from 'ember-concurrency';
-import { isPresent } from '@ember/utils';
+import { isPresent } from 'ember-utils';
 import Pagination from 'kitsu-shared/mixins/pagination';
 import errorMessages from 'client/utils/error-messages';
 import { unshiftObjects } from 'client/utils/array-utils';

@@ -1,4 +1,4 @@
-import Mixin from '@ember/object/mixin';
+import Mixin from 'ember-metal/mixin';
 
 export default Mixin.create({
   activate() {

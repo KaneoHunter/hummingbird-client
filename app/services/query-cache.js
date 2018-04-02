@@ -1,6 +1,7 @@
-import Service, { inject as service } from '@ember/service';
-import { get } from '@ember/object';
-import { typeOf } from '@ember/utils';
+import Service from 'ember-service';
+import get from 'ember-metal/get';
+import service from 'ember-service/inject';
+import { typeOf } from 'ember-utils';
 import RSVP from 'rsvp';
 
 const CACHE_TIME_HOUR = 1;

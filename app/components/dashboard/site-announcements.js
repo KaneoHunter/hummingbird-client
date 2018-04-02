@@ -1,7 +1,8 @@
-import Component from '@ember/component';
-import { get, set, computed } from '@ember/object';
-import { inject as service } from '@ember/service';
-import { mapBy } from '@ember/object/computed';
+import Component from 'ember-component';
+import get from 'ember-metal/get';
+import set from 'ember-metal/set';
+import service from 'ember-service/inject';
+import computed, { mapBy } from 'ember-computed';
 import { task } from 'ember-concurrency';
 
 export default Component.extend({

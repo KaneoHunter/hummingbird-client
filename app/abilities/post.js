@@ -1,6 +1,6 @@
 import { Ability } from 'ember-can';
-import { get, computed } from '@ember/object';
-import { readOnly } from '@ember/object/computed';
+import get from 'ember-metal/get';
+import computed, { readOnly } from 'ember-computed';
 
 export default Ability.extend({
   canWrite: readOnly('session.hasUser'),

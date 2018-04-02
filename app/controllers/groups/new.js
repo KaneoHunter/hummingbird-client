@@ -1,7 +1,8 @@
-import Controller from '@ember/controller';
-import { get, set, computed } from '@ember/object';
-import { inject as service } from '@ember/service';
-import { alias } from '@ember/object/computed';
+import Controller from 'ember-controller';
+import get from 'ember-metal/get';
+import set from 'ember-metal/set';
+import service from 'ember-service/inject';
+import computed, { alias } from 'ember-computed';
 
 export default Controller.extend({
   isSaving: false,

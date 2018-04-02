@@ -1,9 +1,9 @@
-import { isArray } from '@ember/array';
+import { isEmberArray } from 'ember-array/utils';
 import Transform from 'ember-data/transform';
 
 export default Transform.extend({
   deserialize(value) {
-    return isArray(value) ? value : [];
+    return isEmberArray(value) ? value : [];
   },
 
   serialize(value) {

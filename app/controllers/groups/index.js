@@ -1,6 +1,7 @@
-import Controller from '@ember/controller';
-import { get, set } from '@ember/object';
-import { inject as service } from '@ember/service';
+import Controller from 'ember-controller';
+import get from 'ember-metal/get';
+import set from 'ember-metal/set';
+import service from 'ember-service/inject';
 import QueryParams from 'ember-parachute';
 import { concat } from 'client/utils/computed-macros';
 

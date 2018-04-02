@@ -1,6 +1,7 @@
 import PowerSelectComponent from 'ember-power-select/components/power-select';
-import { get, computed } from '@ember/object';
-import { inject as service } from '@ember/service';
+import computed from 'ember-computed';
+import get from 'ember-metal/get';
+import service from 'ember-service/inject';
 
 // Override `ember-power-select` to support intl messages
 export default PowerSelectComponent.extend({

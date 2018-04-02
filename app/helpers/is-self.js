@@ -1,6 +1,7 @@
-import Helper from '@ember/component/helper';
-import { inject as service } from '@ember/service';
-import { get, observer } from '@ember/object';
+import Helper from 'ember-helper';
+import service from 'ember-service/inject';
+import get from 'ember-metal/get';
+import observer from 'ember-metal/observer';
 
 export function isSelf(self, other) {
   return get(self, 'id') === get(other, 'id');

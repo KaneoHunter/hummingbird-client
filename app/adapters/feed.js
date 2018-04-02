@@ -1,5 +1,5 @@
 import ApplicationAdapter from 'client/adapters/application';
-import { get } from '@ember/object';
+import get from 'ember-metal/get';
 
 export default ApplicationAdapter.extend({
   urlForQuery(query) {

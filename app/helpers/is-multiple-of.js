@@ -1,4 +1,4 @@
-import { helper } from '@ember/component/helper';
+import { helper } from 'ember-helper';
 
 export function isMultipleOf([value, target]) {
   return value % target === 0;

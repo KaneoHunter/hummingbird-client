@@ -1,5 +1,6 @@
 import { Ability } from 'ember-can';
-import { get, computed } from '@ember/object';
+import get from 'ember-metal/get';
+import computed from 'ember-computed';
 
 export default Ability.extend({
   /**

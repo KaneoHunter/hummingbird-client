@@ -1,5 +1,6 @@
 import { Ability, computed as ability } from 'ember-can';
-import { get, computed } from '@ember/object';
+import get from 'ember-metal/get';
+import computed from 'ember-computed';
 
 const hasPermission = permission => (
   computed('membership.permissions.@each.hasDirtyAttributes', function() {

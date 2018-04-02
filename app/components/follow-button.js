@@ -1,8 +1,10 @@
-import Component from '@ember/component';
-import { get, set, observer } from '@ember/object';
-import { inject as service } from '@ember/service';
+import Component from 'ember-component';
+import get from 'ember-metal/get';
+import set from 'ember-metal/set';
+import service from 'ember-service/inject';
 import { task } from 'ember-concurrency';
-import { or, notEmpty } from '@ember/object/computed';
+import { or, notEmpty } from 'ember-computed';
+import observer from 'ember-metal/observer';
 import errorMessages from 'client/utils/error-messages';
 
 export default Component.extend({

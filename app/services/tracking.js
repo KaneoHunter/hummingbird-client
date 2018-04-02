@@ -1,5 +1,6 @@
-import Service, { inject as service } from '@ember/service';
-import { get } from '@ember/object';
+import Service from 'ember-service';
+import service from 'ember-service/inject';
+import get from 'ember-metal/get';
 
 export default Service.extend({
   metrics: service(),
