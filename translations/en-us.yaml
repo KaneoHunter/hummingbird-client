@@ -253,11 +253,10 @@ media:
         licensors: "Licensors"
         studios: "Studios"
         serialization: "Serialization"
-        duration: "Length"
-        total: "{total} total"
+        duration: "Duration"
         length: "{count, plural,
           =1 {{length} minutes}
-          other {{length} minutes each}}"
+          other {{total} total ({length} minutes each)}}"
         rating: "Rating"
         expand:
           false: "More info"
