@@ -800,7 +800,7 @@ groups:
       edit-btn: "Edit"
       add-btn: "Add"
       add-placeholder: "Group member"
-      not-found: "Couldn't find a group member with that name."
+      not-found: "Couldn't find a group member with that username."
       message-btn: "Message the leaders"
       message-leader: "You're a leader of this group!"
       modal:
@@ -851,7 +851,7 @@ groups:
         header: "Banned Users"
         unban: "Unban"
         ban: "Ban"
-        placeholder: "Name"
+        placeholder: "Username"
         empty: "Hooray! You don't have any banned users."
       members:
         header: "Members"
