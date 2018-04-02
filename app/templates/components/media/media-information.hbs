@@ -117,15 +117,10 @@
     {{/if}}
 
     {{! Duration }}
-    {{#if (and isAnime media.episodeLength)}}
+    {{#if (and isAnime (and media.unitCount media.episodeLength))}}
       <li>
         <strong>{{t "media.show.summary.information.duration"}}</strong>
-        {{#if (and media.unitCount media.episodeLength (gt media.unitCount 1))}}
-          {{t "media.show.summary.information.total" total=totalTime}}
-          ({{t "media.show.summary.information.length" count=media.unitCount length=media.episodeLength}})
-        {{else}}
-          {{t "media.show.summary.information.length" count=media.unitCount length=media.episodeLength}}
-        {{/if}}
+        {{t "media.show.summary.information.length" total=totalTime length=media.episodeLength count=media.unitCount}}
       </li>
     {{/if}}
   {{/if}}
