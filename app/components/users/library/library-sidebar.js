@@ -17,9 +17,7 @@ export default Component.extend({
   init() {
     this._super(...arguments);
     this.mediaOptions = ['anime', 'manga'];
-    if (get(this, 'session.hasUser')) {
-      get(this, 'preloadReactionsTask').perform();
-    }
+    get(this, 'preloadReactionsTask').perform();
   },
 
   didReceiveAttrs() {
