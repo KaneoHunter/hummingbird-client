@@ -3,13 +3,11 @@ import get from 'ember-metal/get';
 import set from 'ember-metal/set';
 import service from 'ember-service/inject';
 import computed, { or } from 'ember-computed';
-import { htmlSafe } from 'ember-string';
 import { task } from 'ember-concurrency';
 import errorMessages from 'client/utils/error-messages';
-import { image } from 'client/helpers/image';
 
 export default Component.extend({
-  classNames: ['col-sm-4', 'reaction-thumb', 'card'],
+  classNames: ['reaction-wrapper', 'col-sm-4'],
   isUpvoted: false,
   queryCache: service(),
   store: service(),
@@ -27,11 +25,6 @@ export default Component.extend({
       return true;
     }
   }),
-
-  posterImageStyle: computed('media.posterImage', function() {
-    const posterImage = image(get(this, 'media.posterImage'), 'medium');
-    return htmlSafe(`background-image: url("${posterImage}")`);
-  }).readOnly(),
 
   didReceiveAttrs() {
     this._super(...arguments);

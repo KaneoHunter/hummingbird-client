@@ -44,12 +44,12 @@
       {{#if noLimit}}
         {{#infinite-pagination onPagination=(action "onPagination")}}
           {{#each reactions as |reaction|}}
-            {{media/media-reaction reaction=reaction media=media}}
+            {{media/media-reaction reaction=reaction}}
           {{/each}}
         {{/infinite-pagination}}
       {{else}}
         {{#each reactions as |reaction|}}
-          {{media/media-reaction reaction=reaction media=media}}
+          {{media/media-reaction reaction=reaction}}
         {{/each}}
         {{#if (gt getReactionsTask.last.value.meta.count 6)}}
           <div class="reactions-more">
