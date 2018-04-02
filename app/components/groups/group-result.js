@@ -21,7 +21,7 @@ export default Component.extend({
 
   actions: {
     handleGroupClick() {
-      get(this, 'router').transitionTo('groups.group.group-page.index', get(this, 'group'));
+      get(this, 'router').transitionTo('groups.group.group-page.index', [get(this, 'group.slug')]);
     }
   }
 });

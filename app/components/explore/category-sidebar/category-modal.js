@@ -26,9 +26,9 @@ export default Component.extend({
   }).drop(),
 
   actions: {
-    handleTransition(category) {
+    handleTransition(slug) {
       this.$('.modal').on('hidden.bs.modal', () => {
-        get(this, 'router').transitionTo('explore.category', category);
+        get(this, 'router').transitionTo('explore.category', [slug]);
       }).modal('hide');
     }
   }
