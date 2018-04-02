@@ -137,7 +137,7 @@ export default Route.extend(SlideHeaderMixin, Pagination, {
       case 'date':
         return '-start_date';
       case 'recent':
-        return '-created_at';
+        return '-id';
       default:
         return '-user_count';
     }
