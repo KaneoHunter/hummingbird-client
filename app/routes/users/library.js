@@ -185,7 +185,7 @@ export default Route.extend(Pagination, {
   _getRequestOptions({ media, status, sort, title }) {
     const user = this.modelFor('users');
     const options = {
-      include: `${media},user,mediaReaction`,
+      include: `${media},user`,
       filter: {
         user_id: get(user, 'id'),
         kind: media,
@@ -235,7 +235,6 @@ export default Route.extend(Pagination, {
         'canonicalTitle',
         'titles',
         'synopsis',
-        'subtype',
         'startDate',
         'status',
         'averageRating',
