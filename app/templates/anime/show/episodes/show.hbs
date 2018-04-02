@@ -1,9 +1,8 @@
 <div class="col-sm-12 no-padding">
   <!-- <a href={{href-to (concat media.modelType ".show." model.modelType "s")}} class="episode-list">{{t "media.show.units.back" type=model.modelType}}</a> -->
   <div class="unit-summary">
-
-    {{video-embed episode=model}} <!-- Hide if no Hulu -->
-    <div class="col-sm row"> <!-- Hide if no Hulu -->
+    {{video-embed episode=model}}
+    <div class="col-sm row">
       <div class="episode-list">
         <div class="language-selector">
           <div class="dropdown">
@@ -84,7 +83,7 @@
           </div>
         {{/if}}
       </div>
-      <div class="streamer-plug hulu-plug"> <!-- Hide if no Hulu -->
+      <div class="streamer-plug hulu-plug">
         <span class="plug-logo">
           {{svg-jar "hulu-lg"}}
         </span>
