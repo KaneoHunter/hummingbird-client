@@ -356,10 +356,10 @@
   }
   tbody {
     td {
-      font-size: 14px;
+      font-size: 13px;
     }
     .cell-title {
-      font-weight: 500;
+      font-weight: 700;
     }
   }
   .edit-entry {
@@ -470,8 +470,8 @@
   }
   .cell-poster {
     display: inline-block;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 3px;
     background: #ddd;
     float: left;
@@ -479,10 +479,10 @@
     overflow: hidden;
   }
   .checkbox-cell {
-    padding: 0.75rem 8px;
+    padding: 0 8px;
     margin-left: -8px;
     text-align: center;
-    line-height: 40px;
+    line-height: 60px;
   }
   .cell-title {
     line-height: 35px;
@@ -539,7 +539,7 @@
 .entry-rating-empty {
   display: inline-block;
   position: relative;
-  top: 8px;
+  top: 6px;
   &.empty-rating-simple {
     top: 1px;
   }
