@@ -22,9 +22,7 @@ export default Component.extend(Pagination, {
   didReceiveAttrs() {
     this._super(...arguments);
     get(this, 'getReactionsTask').perform();
-    if (get(this, 'session.hasUser')){
-      get(this, 'getLibraryEntryTask').perform();
-    }
+    get(this, 'getLibraryEntryTask').perform();
     set(this, 'userCreated', []);
   },
 
