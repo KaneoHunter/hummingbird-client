@@ -16,7 +16,7 @@ export default Controller.extend(queryParams.Mixin, {
   ajax: service(),
   store: service(),
 
-  queryParamsDidChange({ changed: { notification } }) {
+  queryParamsDidChange({ queryParams: { notification } }) {
     if (notification && get(this, 'session.hasUser')) {
       this._markNotificationRead(notification).finally(() => {
         set(this, 'notification', null);
