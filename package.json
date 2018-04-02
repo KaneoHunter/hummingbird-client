@@ -13,8 +13,7 @@
   },
   "repository": "https://github.com/hummingbird-me/hummingbird-client",
   "engines": {
-    "node": ">= 4",
-    "yarn": "1.0.1"
+    "node": ">= 4"
   },
   "author": "Kitsu, Inc.",
   "license": "Apache-2.0",
