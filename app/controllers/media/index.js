@@ -60,9 +60,7 @@ export const MEDIA_QUERY_PARAMS = {
     refresh: true,
     serialize(value) {
       const [lower, upper] = value;
-      if (lower === 1907 && upper === (moment().year() + 1)) {
-        return undefined;
-      } else if (upper === (moment().year() + 1)) {
+      if (upper === (moment().year() + 1)) {
         return serializeArray([lower, null]);
       }
       return serializeArray(value);
