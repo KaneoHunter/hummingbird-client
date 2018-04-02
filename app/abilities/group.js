@@ -25,11 +25,14 @@ export default Ability.extend({
   canManageTickets: hasPermission('tickets'),
 
   canWritePost: computed('model', 'membership', function() {
+    // can only write a post if you're a group member'
+    const membership = this._isGroupMember();
+    if (!membership) { return false; }
+
     // If this is a restricted group, then posting is limited to leaders
     const group = get(this, 'model');
     if (get(group, 'isRestricted')) {
-      const membership = this._isGroupMember();
-      return membership && membership.hasPermission('content');
+      return membership.hasPermission('content');
     }
     return true;
   }).readOnly(),
@@ -39,9 +42,16 @@ export default Ability.extend({
     const canEditPost = get(this, 'postAbility.canEdit');
     if (canEditPost) { return true; }
 
-    // Do you have the correct group permissions to edit community content?
+    // If you're not a group member then you can't edit a group post
     const membership = this._isGroupMember();
-    return membership && membership.hasPermission('content');
+    if (!membership) { return false; }
+
+    // Do you have the correct group permissions to edit community content?
+    return membership.hasPermission('content');
+  }).readOnly(),
+
+  canWriteComment: computed('model', 'membership', function() {
+    return this._isGroupMember();
   }).readOnly(),
 
   canEditComment: computed('model', 'membership', 'comment', function() {
@@ -49,9 +59,12 @@ export default Ability.extend({
     const canEditComment = get(this, 'commentAbility.canEdit');
     if (canEditComment) { return true; }
 
-    // Requires the correct permissions
+    // You have to be a group member
     const membership = this._isGroupMember();
-    return membership && membership.hasPermission('content');
+    if (!membership) { return false; }
+
+    // Requires the correct permissions
+    return membership.hasPermission('content');
   }).readOnly(),
 
   /**
