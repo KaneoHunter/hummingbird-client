@@ -14,19 +14,17 @@ export default BaseAdapter.extend({
     a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
     /* eslint-enable */
     window.twq('init', id);
+    this.trackPage();
   },
 
   trackPage(options = {}) {
     window.twq('track', 'PageView', options);
   },
 
-  trackEvent() {},
+  trackEvent(options = {}) {},
 
   willDestroy() {
     document.querySelectorAll('script[src*="//static.ads-twitter.com/uwt.js"]').forEach((element) => {
-      element.remove();
-    });
-    document.querySelectorAll('script[src*="analytics.twitter.com"]').forEach((element) => {
       element.remove();
     });
   }
