@@ -27,12 +27,7 @@ export default Component.extend({
     const changeset = get(this, 'changeset');
     yield changeset.validate();
     if (get(changeset, 'isValid') && get(changeset, 'isDirty')) {
-      try {
-        yield invokeAction(this, 'saveEntry', changeset);
-      } catch (error) {
-        changeset.rollback();
-        get(this, 'libraryEntry').rollbackAttributes();
-      }
+      yield invokeAction(this, 'saveEntry', changeset);
     }
   }).restartable(),
 
