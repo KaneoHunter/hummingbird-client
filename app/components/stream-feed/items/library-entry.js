@@ -12,7 +12,7 @@ export default Component.extend({
   isSynopsisExpanded: false,
   hasMoreActivities: false,
   showAll: false,
-  activityLimit: 2,
+  activityLimit: 3,
   metrics: service(),
 
   media: getter(function() {
