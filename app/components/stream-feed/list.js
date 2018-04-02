@@ -270,8 +270,7 @@ export default Component.extend(Pagination, {
     }
   },
 
-  onPagination(_records) {
-    const records = _records.toArray();
+  onPagination(records) {
     const duplicates = records.filter(record => (
       get(this, 'allFeedItems').findBy('group', get(record, 'group')) !== undefined
     ));
