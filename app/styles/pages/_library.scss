@@ -180,13 +180,6 @@
 .library-filters {
   font-size: 12px;
   float: right;
-  .sorting {
-    position: relative;
-    top: 8px;
-    &.sorting-asc {
-      svg { transform: rotateX(180deg); }
-    }
-  }
 }
 
 .library-content {

@@ -129,50 +129,35 @@ export default Route.extend(Pagination, {
   _getSortingKey(sort) {
     const controller = this.controllerFor(get(this, 'routeName'));
     const mediaType = get(controller, 'media');
-    let sortKey;
 
     // get the correct sorting key
     switch (sort) {
-      case 'watched': {
-        sortKey = 'progressed_at';
-        break;
+      case 'watched':
+      case '-watched': {
+        return sort.replace('watched', 'progressed_at');
       }
-      case 'started':
-      case 'finished': {
-        sortKey = `${sort}_at`;
-        break;
-      }
-      case 'added': {
-        sortKey = 'created_at';
-        break;
-      }
-      case 'title': {
-        const field = `${mediaType}.titles`;
+      case 'title':
+      case '-title': {
+        let field = `${mediaType}.titles`;
         // If the user is logged in, then we want to use their preferred title preference
         if (get(this, 'session.hasUser')) {
           const preference = get(this, 'session.account.titleLanguagePreference');
           const key = getTitleField(preference.toLowerCase());
-          sortKey = `${field}.${key}`;
+          field = `${field}.${key}`;
         } else {
-          sortKey = `${field}.canonical`;
+          field = `${field}.canonical`;
         }
-        break;
+        return sort.charAt(0) === '-' ? `-${field}` : field;
       }
-      case 'length': {
-        sortKey = mediaType === 'anime' ? 'anime.episode_count' : 'manga.chapter_count';
-        break;
+      case 'length':
+      case '-length': {
+        const field = mediaType === 'anime' ? 'anime.episode_count' : 'manga.chapter_count';
+        return sort.replace('length', field);
       }
       default: {
-        sortKey = sort;
+        return sort;
       }
     }
-
-    let direction = get(controller, 'direction');
-    // reverse direction for title sorting
-    if (sort === 'title') {
-      direction = direction === 'desc' ? 'asc' : 'desc';
-    }
-    return direction === 'desc' ? `-${sortKey}` : sortKey;
   },
 
   /**
