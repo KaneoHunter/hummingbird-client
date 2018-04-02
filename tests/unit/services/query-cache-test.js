@@ -16,7 +16,7 @@ test('query proxies to store#query', function(assert) {
   assert.ok(stub.calledWith('model-type', query));
 });
 
-test('can determine if response should be cached', async function(assert) {
+test('can determine if response should be cached', function(assert) {
   const service = this.subject({ store: { query: () => {} } });
   const query = { hello: 'world' };
 
@@ -31,16 +31,17 @@ test('can determine if response should be cached', async function(assert) {
   // caching
   service.query('model-type', query, { cache: true });
   assert.ok(stub.calledWith('model-type', query));
-  await wait();
-  assert.ok(service.cache['model-type'][JSON.stringify(query)] !== undefined);
+  return wait().then(() => {
+    assert.ok(service.cache['model-type'][JSON.stringify(query)] !== undefined);
+  });
 });
 
-test('can push and get records', async function(assert) {
+test('can push records into the cache', function(assert) {
   const service = this.subject();
   const query = { hello: 'world' };
   const records = [1, 2, 3];
   service.push('model-type', query, records);
-  const result = await service.get('model-type', query);
+  const result = service.cache['model-type'][JSON.stringify(query)].promise._result;
   assert.deepEqual(result, records);
 });
 

@@ -28,10 +28,6 @@ export default Component.extend({
 
   actions: {
     updateLibraryEntry(status) {
-      if (!get(this, 'session.hasUser')) {
-        return get(this, 'session').signUpModal();
-      }
-
       if (get(this, 'libraryEntry')) {
         invoke(this, 'updateAttribute', 'status', status);
       } else {

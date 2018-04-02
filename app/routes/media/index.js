@@ -1,5 +1,6 @@
 import Route from 'ember-route';
 import get from 'ember-metal/get';
+import set from 'ember-metal/set';
 import service from 'ember-service/inject';
 import { isEmpty, typeOf } from 'ember-utils';
 import { isEmberArray } from 'ember-array/utils';
@@ -9,6 +10,17 @@ import Pagination from 'kitsu-shared/mixins/pagination';
 export default Route.extend(SlideHeaderMixin, Pagination, {
   templateName: 'media/index',
   queryCache: service(),
+
+  beforeModel() {
+    this._super(...arguments);
+    const controller = this.controllerFor(get(this, 'routeName'));
+    if (get(controller, 'availableGenres') !== undefined) {
+      return;
+    }
+    get(this, 'queryCache').query('genre', {
+      page: { limit: 10000, offset: 0 }
+    }).then(genres => set(controller, 'availableGenres', genres.sortBy('name')));
+  },
 
   model(params) {
     const options = this._getRequestOptions(params);
@@ -61,12 +73,6 @@ export default Route.extend(SlideHeaderMixin, Pagination, {
     }
   },
 
-  /**
-   * Build the request object that is sent to our API.
-   *
-   * @private
-   * @param {Object} params
-   */
   _getRequestOptions(params) {
     const options = {
       filter: {},
@@ -95,11 +101,6 @@ export default Route.extend(SlideHeaderMixin, Pagination, {
     return options;
   },
 
-  /**
-   * Build the fieldsets object that is sent to our API.
-   *
-   * @private
-   */
   _getFieldsets() {
     const [mediaType] = get(this, 'routeName').split('.');
     return {
@@ -117,12 +118,6 @@ export default Route.extend(SlideHeaderMixin, Pagination, {
     };
   },
 
-  /**
-   * Converts the client-side sorting key to one the server API expects.
-   *
-   * @private
-   * @param {String} sort
-   */
   _getSortingKey(sort) {
     switch (sort) {
       case 'rating':

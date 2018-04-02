@@ -12,17 +12,14 @@ export default Route.extend(CanonicalRedirectMixin, CoverPageMixin, {
 
   model({ slug }) {
     const [type] = get(this, 'routeName').split('.');
-    let include = ['categories', 'mediaRelationships.destination'];
+    let include = ['genres', 'mediaRelationships.destination'];
     if (type === 'anime') {
       include.push('animeProductions.producer');
     }
     include = include.join(',');
     if (slug.match(/\D+/)) {
-      return get(this, 'queryCache').query(type, {
-        filter: { slug },
-        fields: { categories: 'slug,title' },
-        include
-      }).then(records => get(records, 'firstObject'));
+      return get(this, 'queryCache').query(type, { filter: { slug }, include })
+        .then(records => get(records, 'firstObject'));
     }
     return get(this, 'store').findRecord(type, slug, { include });
   },
@@ -129,10 +126,11 @@ export default Route.extend(CanonicalRedirectMixin, CoverPageMixin, {
     const data = {
       '@context': 'http://schema.org',
       '@type': 'CreativeWorkSeries',
-      name: Object.values(get(model, 'titles')).uniq(),
+      name: Object.values(get(model, 'titles'))
+        .reject(title => title === get(model, 'canonicalTitle')),
       description: get(model, 'synopsis'),
       image: get(model, 'posterImage.large'),
-      genre: get(model, 'categories').mapBy('title')
+      genre: get(model, 'genres').mapBy('name')
     };
 
     if (get(model, 'averageRating')) {
