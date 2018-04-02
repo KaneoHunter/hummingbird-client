@@ -130,7 +130,6 @@ media:
       popularity: "Popularity"
       rating: "Average Rating"
       date: "Date"
-      recent: "Recently Added"
   show:
     navigation:
       summary: "Summary"
