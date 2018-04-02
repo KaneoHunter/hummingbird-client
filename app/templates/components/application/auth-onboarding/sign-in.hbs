@@ -20,23 +20,17 @@
     <small>Or, sign in with:</small>
     <form>
       <div class="form-group email-login">
-        <input
-          placeholder="Email"
-          autocomplete="email username"
+        {{one-way-text identification
+          update=(action (mut identification))
           class="form-control username"
-          value={{identification}}
-          oninput={{action (mut identification) value="target.value"}}
-          autofocus required data-test-identification>
+          placeholder="Email"
+          data-test-identification="true"}}
 
-        <input
-          placeholder="Password"
-          autocomplete="current-password"
-          type="password"
+        {{one-way-password password
+          update=(action (mut password))
           class="form-control password"
-          value={{password}}
-          oninput={{action (mut password) value="target.value"}}
-          required data-test-password>
-
+          placeholder="Password"
+          data-test-password="true"}}
         <a href={{href-to "password-reset"}} class="forgot-pass-link" {{action "transitionToForgot"}}>forgot password?</a>
       </div>
 
