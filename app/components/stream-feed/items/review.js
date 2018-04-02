@@ -11,7 +11,7 @@ export default Component.extend(ClipboardMixin, {
   classNames: ['stream-item', 'row'],
   metrics: service(),
   notify: service(),
-  router: service(),
+  router: service('-routing'),
   store: service(),
   host: getter(() => `${location.protocol}//${location.host}`),
 

@@ -23,7 +23,7 @@ export default Component.extend(ClipboardMixin, CanMixin, {
 
   embedly: service(),
   notify: service(),
-  router: service(),
+  router: service('-routing'),
   store: service(),
   queryCache: service(),
   metrics: service(),

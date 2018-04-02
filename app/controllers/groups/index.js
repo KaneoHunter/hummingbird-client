@@ -20,7 +20,7 @@ const queryParams = new QueryParams({
 });
 
 export default Controller.extend(queryParams.Mixin, {
-  router: service(),
+  router: service('-routing'),
   groups: concat('model.taskInstance.value', 'model.paginatedRecords'),
 
   queryParamsDidChange({ shouldRefresh, queryParams, changed }) {

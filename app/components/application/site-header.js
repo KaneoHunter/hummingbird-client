@@ -5,7 +5,7 @@ import { inject as service } from '@ember/service';
 export default Component.extend({
   authOpened: false,
   authComponent: 'social-auth',
-  router: service(),
+  router: service('-routing'),
 
   isBrowseRoute: computed('router.currentRouteName', function() {
     const route = get(this, 'router.currentRouteName');

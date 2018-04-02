@@ -8,7 +8,7 @@ import RSVP from 'rsvp';
 
 export default Component.extend({
   tab: 'about-me',
-  router: service(),
+  router: service('-routing'),
   isDirty: filterBy('records', 'hasDirtyAttributes'),
 
   updateProfileTask: task(function* () {

@@ -14,7 +14,7 @@ import { concat } from 'client/utils/computed-macros';
  * the stream setup.
  */
 export default Component.extend(Pagination, {
-  router: service(),
+  router: service('-routing'),
   ajax: service(),
   notify: service(),
   store: service(),

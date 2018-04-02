@@ -3,7 +3,7 @@ import { inject as service } from '@ember/service';
 import Config from 'client/config/environment';
 
 export default MetricsService.extend({
-  router: service(),
+  router: service('-routing'),
 
   /**
    * Support providing `staging` in the `environments` array for a metric adapter.
