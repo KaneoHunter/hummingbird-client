@@ -20,7 +20,16 @@
   </div>
 {{else if taskValue}}
   {{#infinite-pagination onPagination=(route-action "onPagination")}}
-    {{media/units/unit-grid units=taskValue media=media}}
+    {{! @TODO: Componentsize }}
+    <ul class="media--unit-grid row">
+      {{#each taskValue as |unit|}}
+        <li class="col-lg-4 col-sm-6">
+          <a href={{href-to (concat media.modelType ".show." (if (eq media.modelType "anime") "episodes" "chapters") ".show") unit}}>
+            {{media/units/unit-thumbnail unit=unit}}
+          </a>
+        </li>
+      {{/each}}
+    </ul>
   {{/infinite-pagination}}
 {{else}}
   <div class="text-xs-center w-100 m-t-1 m-b-1">
