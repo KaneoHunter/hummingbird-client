@@ -40,9 +40,7 @@ export default Component.extend(ClipboardMixin, {
 
   didReceiveAttrs() {
     this._super(...arguments);
-    if (get(this, 'session.hasUser')) {
-      get(this, 'getUserVoteTask').perform();
-    }
+    get(this, 'getUserVoteTask').perform();
   },
 
   getUserVoteTask: task(function* () {
