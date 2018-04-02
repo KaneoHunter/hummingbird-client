@@ -710,6 +710,9 @@
   padding-left: 45px;
   margin-top: 10px;
   margin-bottom: 0;
+  li:nth-child(3) {
+    display: none;
+  }
 }
 
 .agg-item {
