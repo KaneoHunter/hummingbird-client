@@ -143,12 +143,6 @@ export default Component.extend(Pagination, {
         this._setupSubscription(data);
       });
     }
-
-    // notice
-    if (get(this, 'streamType') === 'interest_timeline') {
-      const seenNotice = get(this, `lastUsed.feed-${get(this, 'streamInterest')}-notice`);
-      set(this, 'showInterestNotice', !seenNotice);
-    }
   },
 
   willDestroyElement() {
@@ -339,12 +333,6 @@ export default Component.extend(Pagination, {
         set(this, 'realtimeLoading', false);
         this._trackImpressions(data);
       }).catch(() => set(this, 'realtimeLoading', false));
-    },
-
-    dismissNotice() {
-      const interest = get(this, 'streamInterest');
-      get(this, 'lastUsed').set(`feed-${interest}-notice`, true);
-      set(this, 'showInterestNotice', false);
     }
   }
 });
