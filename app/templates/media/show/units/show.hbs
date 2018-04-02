@@ -16,9 +16,7 @@
             {{t "media.show.units.unit" type=model.modelType}}
             {{model.number}}
           </h6>
-          {{#if (not (eq model.canonicalTitle (concat (capitalize model.modelType) " " model.number)))}}
-            <div class="info-emphasis thumb-caption">{{model.canonicalTitle}}</div>
-          {{/if}}
+          <div class="info-emphasis thumb-caption">{{model.canonicalTitle}}</div>
           <div class="unit-info small">
           {{#if humanizedLength}}
             <div class="unit-length">

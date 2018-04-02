@@ -3,7 +3,7 @@ import get from 'ember-metal/get';
 import set from 'ember-metal/set';
 import computed, { equal } from 'ember-computed';
 import service from 'ember-service/inject';
-import { capitalize, htmlSafe } from 'ember-string';
+import { htmlSafe } from 'ember-string';
 import { task } from 'ember-concurrency';
 import { strictInvokeAction } from 'ember-invoke-action';
 
@@ -45,8 +45,7 @@ export default Component.extend({
     const unit = get(this, 'entry').belongsTo('unit').value();
     if (unit) {
       const title = get(this, 'entry.unit.canonicalTitle');
-      const placeHolderTitle = `${capitalize(get(unit, 'modelType'))} ${get(unit, 'number')}`;
-      if (title && title !== placeHolderTitle) {
+      if (title) {
         return `${text} - ${title}`;
       }
     }
