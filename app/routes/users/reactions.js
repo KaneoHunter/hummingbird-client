@@ -8,18 +8,21 @@ export default Route.extend(Pagination, {
   intl: service(),
 
   beforeModel() {
-    const { filter } = this.paramsFor(get(this, 'routeName'));
-    if (!['all', 'anime', 'manga'].includes(filter)) {
-      this.replaceWith({ queryParams: { filter: 'all' } });
+    const { media } = this.paramsFor(get(this, 'routeName'));
+    if (!['anime', 'manga'].includes(media)) {
+      this.replaceWith({ queryParams: { media: 'anime' } });
     }
   },
 
-  model({ filter, sort }) {
-    const mediaInclude = filter === 'all' ? 'anime,manga' : filter;
+  model({ media, sort }) {
+    const user = this.modelFor('users');
     return {
       reactionsTaskInstance: this.queryPaginated('media-reaction', {
-        include: `user,${mediaInclude},libraryEntry`,
-        filter: this._getFilter(filter),
+        include: `user,${media},libraryEntry`,
+        filter: {
+          user_id: get(user, 'id'),
+          media_type: capitalize(media)
+        },
         sort: this._getSortingKey(sort)
       }),
       paginatedRecords: []
@@ -38,18 +41,9 @@ export default Route.extend(Pagination, {
     }
   },
 
-  _getFilter(filter) {
-    const user = this.modelFor('users');
-    const reactionFilter = { user_id: get(user, 'id') };
-    if (filter !== 'all') {
-      reactionFilter.media_type = capitalize(filter);
-    }
-    return reactionFilter;
-  },
-
   _getSortingKey(sort) {
     switch (sort) {
-      case 'best':
+      case 'popular':
         return '-upVotesCount';
       default:
         return '-createdAt';
