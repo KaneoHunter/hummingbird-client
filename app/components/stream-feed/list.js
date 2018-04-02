@@ -205,10 +205,9 @@ export default Component.extend(Pagination, {
   _setupSubscription(data) {
     if (isEmpty(data)) { return; }
     // realtime
-    const meta = get(data, 'meta');
-    const group = get(meta, 'feed.group');
-    const id = get(meta, 'feed.id');
-    const token = get(meta, 'readonlyToken');
+    const group = get(this, 'streamType');
+    const id = get(this, 'streamId');
+    const token = get(data, 'meta.readonlyToken');
     this.subscription = get(this, 'streamRealtime').subscribe(group, id, token, object => (
       this._handleRealtime(object)
     ));
