@@ -20,7 +20,7 @@ export default Component.extend({
     const { identification, password } = getProperties(this, 'identification', 'password');
     try {
       yield get(this, 'session').authenticateWithOAuth2(identification, password);
-      yield get(this, 'gotoNext').perform();
+      yield gotoNext.perform();
     } catch (err) {
       get(this, 'notify').error(errorMessages(err));
     }
@@ -29,7 +29,7 @@ export default Component.extend({
   loginWithFacebook: task(function* () {
     try {
       yield get(this, 'session').authenticateWithFacebook()
-      yield get(this, 'gotoNext').perform();
+      yield gotoNext.perform();
     } catch (error) {
       // Facebook succeeded but Kitsu failed (no-account)
       if (error.error === 'invalid_grant') {
