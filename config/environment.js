@@ -103,10 +103,6 @@ module.exports = function(environment) {
       }
     },
 
-    algolia: {
-      appId: 'AWQO5J657S'
-    },
-
     moment: {
       allowEmpty: true,
       includeTimezone: 'subset'
